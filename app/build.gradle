@@ -11,7 +11,8 @@ android {
     defaultConfig {
         applicationId "com.miastech.bodybuildingandroidapp"
         minSdk 24
-        targetSdk 32
+        maxSdkVersion 31
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -31,6 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -39,11 +45,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'androidx.test.ext:junit-ktx:1.1.3'
+    testImplementation 'org.robolectric:robolectric:4.7.3'
 
     def room_version = "2.4.3"
+    def androidXTestVersion = "1.4.0"
+    def testRunnerVersion = "1.4.0"
+    def testRulesVersion = ""
+
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
